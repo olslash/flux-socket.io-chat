@@ -1,0 +1,22 @@
+{
+  "name": "flux-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bluebird": "^2.3.11",
+    "express": "^4.10.4",
+    "flux": "^2.0.1",
+    "fluxxor": "^1.5.0",
+    "react": "^0.12.1",
+    "socket.io": "^1.2.1",
+    "socket.io-client": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "serve": "nodemon --harmony server",
+    "build": "browserify -t reactify app.js > build/app.js"
+  },
+  "author": "Mitch Robb",
+  "license": "ISC"
+}
