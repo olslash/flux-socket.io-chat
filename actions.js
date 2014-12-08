@@ -1,5 +1,5 @@
 var SocketClient = require('./SocketClient');
-var constants = require('./constants');
+var constants    = require('./constants');
 
 module.exports = {
   userJoined: function(userData) {

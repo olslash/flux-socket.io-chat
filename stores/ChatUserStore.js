@@ -38,8 +38,8 @@ module.exports = Fluxxor.createStore({
     this.emit('change');
   },
 
-  onUserParted: function() {
-    this.users[payload.name] = payload;
+  onUserParted: function(payload) {
+    delete this.users[payload.name];
     this.emit('change');
   }
 });

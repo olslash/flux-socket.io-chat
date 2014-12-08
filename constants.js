@@ -1,4 +1,4 @@
-var keyMirror = require('react/lib/keyMirror')
+var keyMirror = require('react/lib/keyMirror');
 
 appConstants = keyMirror({
   LOAD_MESSAGES: null, // initial loading of messages

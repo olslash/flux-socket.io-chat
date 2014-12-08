@@ -1,6 +1,6 @@
 var Promise = require('bluebird');
-var socket = require('socket.io-client');
-var merge = require('react/lib/merge');
+var socket  = require('socket.io-client');
+var merge   = require('react/lib/merge');
 
 var constants = require('./constants').socket;
 
@@ -16,6 +16,7 @@ SocketClient.prototype.init = function(name) {
   this.socket = socket('http://localhost:8000');
   
   var actions = window.flux.actions; // fixme
+  
   // events that will be sent into the app
   this.socket.on(constants.INCOMING_MESSAGE, actions.messageWasReceived.bind(this));
   this.socket.on(constants.USER_JOINED, actions.userJoined.bind(this));
@@ -48,9 +49,9 @@ SocketClient.prototype.loadMessages = function(numPastMessages) {
 // Helper methods
 SocketClient.prototype._loadFromServer = function(type, data) {
   var responseKey = this._generateUniqueId();
-  
+
   var message = {
-    responseKey: this._generateUniqueId()
+    responseKey: responseKey
   };
 
   this.socket.emit(constants[type], merge(message, data));

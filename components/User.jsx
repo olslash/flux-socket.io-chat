@@ -1,5 +1,5 @@
 var Fluxxor = require('fluxxor');
-var React = require('react');
+var React   = require('react');
 
 var FluxMixin = Fluxxor.FluxMixin(React);
 
@@ -13,7 +13,7 @@ module.exports =  React.createClass({
 
   render: function() {
     return (
-      <span className="user">{this.props.name}</span>
-    )
+      <li className="user">{this.props.name}</li>
+    );
   }
 });

@@ -1,4 +1,4 @@
-var Fluxxor = require('Fluxxor');
+var Fluxxor   = require('Fluxxor');
 
 var constants = require('../constants');
 

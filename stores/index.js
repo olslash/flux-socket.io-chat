@@ -1,4 +1,4 @@
-var MessageStore = require('./MessageStore');
+var MessageStore  = require('./MessageStore');
 var ChatUserStore = require('./ChatUserStore');
 
 module.exports = {

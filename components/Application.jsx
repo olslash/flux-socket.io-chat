@@ -1,5 +1,5 @@
 var Fluxxor = require('fluxxor');
-var React = require('react');
+var React   = require('react');
 
 var ChatMemberList = require('./ChatMemberList.jsx');
 
