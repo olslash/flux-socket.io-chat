@@ -3,7 +3,7 @@ var React   = require('react');
 
 var FluxMixin = Fluxxor.FluxMixin(React);
 
-// User component
+// ChatMessage component
 module.exports =  React.createClass({
   mixins: [FluxMixin],
 
