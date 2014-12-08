@@ -1,6 +1,7 @@
 var Fluxxor   = require('Fluxxor');
 
 var constants = require('../constants');
+var SocketClient = require('../SocketClient');
 
 // MessageStore
 module.exports = Fluxxor.createStore({
@@ -16,7 +17,7 @@ module.exports = Fluxxor.createStore({
     );
   },
 
-  onLoadMessages: function(payload) {
+  onLoadMessages: function() {
     this.loading = true;
     this.emit('change');
   },
@@ -33,15 +34,17 @@ module.exports = Fluxxor.createStore({
   },
 
   onMessageSent: function(payload) {
-    var now = new Date(); // fixme: reconcile time between client/server
+    var now = Date.now(); // fixme: reconcile time between client/server
     this.messages[now] = payload;
 
     this.emit('change');
   },
 
   onMessageReceived: function(payload) {
-    this.messages[payload.time] = payload;
-
-    this.emit('change');
+    if (payload.message.sender !== SocketClient.name) {
+      this.messages[payload.message.time] = payload.message;
+      this.emit('change');
+    }
   }
+
 });

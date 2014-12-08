@@ -13,14 +13,14 @@ module.exports = {
     this.dispatch(constants.USER_PARTED, {name: name});
   },
 
-  sendMessage: function(name, messageText) {
+  sendMessage: function(messageText) {
     // client sends a message to the channel
-    SocketClient.sendMessage(name, messageText);
+    SocketClient.sendMessage(SocketClient.name, messageText);
     
     this.dispatch(constants.MESSAGE_SENT, {
-      sender: name,
+      sender: SocketClient.name,
       content: messageText,
-      time: new Date() // fixme: reconcile time between client/server
+      time: Date.now() // fixme: reconcile time between client/server
     });
   },
 
@@ -47,5 +47,5 @@ module.exports = {
       .then(function(data) {
         this.dispatch(constants.LOAD_USERS_SUCCESS, {users: data.users});
       }.bind(this));
-  },
+  }
 };

@@ -8,12 +8,15 @@ module.exports =  React.createClass({
   mixins: [FluxMixin],
 
   propTypes: {
-    name: React.PropTypes.string
+    sender: React.PropTypes.string.isRequired,
+    content: React.PropTypes.string.isRequired
   },
 
   render: function() {
     return (
-      <li className="message">{this.props.name}</li>
+      <ul>
+      <li className="message">{this.props.sender} : {this.props.content}</li>
+      </ul>
     );
   }
 });

@@ -1,7 +1,9 @@
 var Fluxxor = require('fluxxor');
 var React   = require('react');
 
+var MessageList    = require('./MessageList.jsx');
 var ChatMemberList = require('./ChatMemberList.jsx');
+var ChatTextInput = require('./ChatTextInput.jsx');
 
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
@@ -12,7 +14,11 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-    	<ChatMemberList />
+      <div id="chat-messages">
+        <MessageList />
+        <ChatMemberList />
+        <ChatTextInput onSave={ this.getFlux().actions.sendMessage } />
+      </div>
     );
   }
 });

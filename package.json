@@ -14,7 +14,7 @@
   "devDependencies": {},
   "scripts": {
     "serve": "nodemon --harmony server",
-    "build": "browserify -t reactify app.jsx > build/app.js"
+    "build": "browserify -t [reactify --es6] app.jsx > build/app.js"
   },
   "author": "Mitch Robb",
   "license": "ISC"

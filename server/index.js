@@ -45,10 +45,9 @@ function handleSocketDisconnect(socket) {
 }
 
 function handleNewUserRegistration(socket, data) {
-  console.log("a socket is registering", data.name);
   connectedUsers[data.name] = {
     name: data.name,
-    joined: new Date()
+    joined: Date.now()
   };
 
   io.emit(constants.USER_JOINED, connectedUsers[data.name]);
@@ -60,7 +59,7 @@ function handleIncomingMessage(data) {
   // create a message object, save it, and emit it to all clients
   var message = {
     sender: data.name,
-    time: new Date(), // fixme: reconcile time between client/server
+    time: Date.now(), // fixme: reconcile time between client/server
     content: data.message
   };
 
@@ -72,7 +71,7 @@ function handleIncomingMessage(data) {
 function handleSendingMessageHistory(socket, data) {
   var responseKey = data.responseKey;
   var oldMessages = pastMessages.slice(0, data.numPastMessages);
-  
+
   socket.emit(constants.LOAD_MESSAGES, {
     responseKey: responseKey,
     messages: oldMessages
@@ -80,7 +79,6 @@ function handleSendingMessageHistory(socket, data) {
 }
 
 function handleSendingUserList(socket, data) {
-  console.log(data);
   var responseKey = data.responseKey;
 
   var currentUsers = Object.keys(connectedUsers).map(function(key) {
